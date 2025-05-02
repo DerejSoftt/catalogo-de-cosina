@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="developer" content="DerejSoft - https://derejsoft.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CocinaSana - Sobre Nosotros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+  <style>
+    :root {
+      --background: #ffffff;
+      --foreground: #000000;
+      --primary: #0055A5;
+      --primary-light: #6BB5FF;
+      --secondary: #13294B;
+      --secondary-light: #DCE9F9;
+      --accent: #1B5C9A;
+      --accent-light: #A5C8E8;
+      --border: #D1D5DB;
+      --subtitule: #fbbd04;
+      --radius: 1rem;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Header Styles */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background-color: #0055A5;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      padding: 0.75rem 1rem;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .logo-text {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--background);
+    }
+
+    .menu-button {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      color: var(--background);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s;
+    }
+
+    .menu-button:hover {
+      background-color: var(--primary);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      width: 12rem;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      padding: 0.25rem 0;
+      display: none;
+      animation: slide-up 0.2s ease-out;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: var(--foreground);
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--secondary-light);
+    }
+
+    /* Hero Section for About Us */
+/* Hero Section para About Us */
+.about-hero {
+  position: relative;
+  height: 100vh; /* Cambiado a 100vh para ocupar toda la pantalla */
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.about-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.7);
+  z-index: 1;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top, 
+    rgba(202, 227, 245, 0.8) 40%, 
+    rgba(246, 249, 250, 0.4) 30%, 
+  );
+  z-index: 2;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  animation: fade-in 1s ease-out forwards;
+}
+
+.about-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.about-hero-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--subtitule);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Añadimos animación para entrada del texto */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mejoramos la responsive */
+@media (max-width: 768px) {
+  .about-hero {
+    height: 100vh; /* Mantiene 100vh incluso en móviles */
+  }
+  
+  .about-hero-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+  
+  .about-hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .about-hero-content {
+    padding: 1rem;
+  }
+}
+
+/* Para pantallas muy altas (para evitar que se vea demasiado estirado) */
+@media (min-height: 1000px) {
+  .about-hero {
+    height: 90vh;
+  }
+}
+    /* About Content Sections */
+    .about-section {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 1.25rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--subtitule);
+      margin: 1rem auto 0;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .about-content {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .about-image {
+      flex: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: var(--foreground);
+    }
+
+    /* Values Section */
+    .values-section {
+      background-color: var(--secondary-light);
+      padding: 4rem 1.25rem;
+    }
+
+    .values-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .value-card {
+      background-color: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .value-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .value-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .value-description {
+      color: var(--foreground);
+      line-height: 1.6;
+    }
+
+    /* Mission Vision Section */
+    .mv-section {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 1.25rem;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .mv-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+
+    .mv-card {
+      background-color: var(--secondary-light);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .mv-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mv-card p {
+      line-height: 1.6;
+      color: var(--foreground);
+    }
+
+    /* Team Section */
+    .team-section {
+      background-color: var(--secondary-light);
+      padding: 4rem 1.25rem;
+    }
+
+    .team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .team-card {
+      background-color: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .team-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .team-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-position {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .team-bio {
+      color: var(--foreground);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 1rem;
+      margin-top: auto;
+    }
+    footer a {
+      color: #fafbfc;
+      text-decoration: none;
+    }
+    .footer-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .footer-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.9rem;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .contact-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .contact-text {
+      font-size: 0.875rem;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+    
+
+    /* WhatsApp Float Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      display: none;
+    }
+
+    .whatsapp-float a {
+      background-color: #25D366;
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .whatsapp-float svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    /* Animations */
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slide-up {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 0.5s ease-out forwards;
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.5s ease-out forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        display: block;
+      }
+      
+      .about-hero {
+        height: 50vh;
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .contact-item {
+        padding: 0;
+      }
+    }
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container">
+        <h1 class="logo-text">CocinaSana</h1>
+      </div>
+
+      <!-- Menu -->
+      <div class="menu-container">
+        <button class="menu-button" id="menuButton">
+          <span>Menú</span>
+          <i class="lucide lucide-chevron-down" id="menuIcon"></i>
+        </button>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="index.html" class="dropdown-item">Inicio</a>
+          <a href="conocenos.html" class="dropdown-item">Conocenos</a>
+          <a href="/catalogo-de-cosina/index.html#productos" class="dropdown-item">Productos</a>
+          <a href="/catalogo-de-cosina/index.html#contacto" class="dropdown-item">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- Hero Section mejorado -->
+<section class="about-hero">
+  <img src="imagenes/portada2.webp" alt="Nuestra Cocina" class="about-hero-image">
+  <div class="about-hero-overlay"></div>
+  <div class="about-hero-content">
+    <h1 class="about-hero-title">Nuestra Pasión por la Excelencia Culinaria</h1>
+    <p class="about-hero-subtitle">Más de 15 años transformando cocinas</p>
+  </div>
+</section>
+
+  <!-- About Us Section -->
+  <section class="about-section">
+    <h2 class="section-title">Nuestra Historia</h2>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="imagenes/a6.webp" alt="Fundadora de CocinaElite" loading="lazy">
+      </div>
+      <div class="about-text">
+        <h3>De un sueño a una realidad</h3>
+        <p>CocinaElite nació en 2008 de la visión de María Rodríguez, una apasionada chef profesional que identificó la necesidad de llevar utensilios de cocina premium a los hogares dominicanos. Lo que comenzó como un pequeño emprendimiento familiar hoy es la distribuidora líder de Royal Prestige en el país.</p>
+        <p>Nuestro compromiso siempre ha sido ofrecer productos que combinen innovación tecnológica, durabilidad excepcional y diseño elegante. Cada pieza en nuestro catálogo ha sido cuidadosamente seleccionada para satisfacer las necesidades de chefs profesionales y amantes de la cocina por igual.</p>
+        <p>Hoy, con más de 15,000 clientes satisfechos, continuamos innovando para brindar las mejores soluciones culinarias, acompañadas de un servicio personalizado que nos distingue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="values-section">
+    <div class="values-container">
+      <h2 class="section-title">Nuestros Valores</h2>
+      <div class="values-grid">
+        <div class="value-card animate-fade-in" style="animation-delay: 100ms">
+          <div class="value-icon">
+            <span style="font-size: 2.5rem;">🤝</span>
+            <i class="lucide lucide-heart-handshake"></i>
+          </div>
+          <h3 class="value-title">Integridad</h3>
+          <p class="value-description">Actuamos con honestidad y transparencia en cada interacción con nuestros clientes, proveedores y equipo.</p>
+        </div>
+        
+        <div class="value-card animate-fade-in" style="animation-delay: 200ms">
+          <div class="value-icon">
+            <span style="font-size: 2.5rem;">⭐</span>
+            <i class="lucide lucide-star"></i>
+          </div>
+          <h3 class="value-title">Excelencia</h3>
+          <p class="value-description">Buscamos la perfección en cada detalle, desde la calidad de nuestros productos hasta la atención al cliente.</p>
+        </div>
+        
+        <div class="value-card animate-fade-in" style="animation-delay: 300ms">
+          <div class="value-icon">
+            <!-- Reemplazado con emoji para mayor compatibilidad -->
+            <span style="font-size: 2.5rem;">👥</span>
+            <i class="lucide lucide-users"></i>
+          </div>
+          <h3 class="value-title">Compromiso</h3>
+          <p class="value-description">Nos dedicamos completamente a satisfacer las necesidades culinarias de nuestros clientes con soluciones duraderas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="mv-section">
+    <h2 class="section-title">Nuestra Razón de Ser</h2>
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h3><i class="lucide lucide-target"></i>  
+            <span style="font-size: 1.5rem; margin-right: 0.5rem;">🎯</span>
+             Misión</h3>
+        <p>Proveer a nuestros clientes los mejores sistemas de cocina premium que combinen innovación tecnológica, diseño funcional y durabilidad excepcional, acompañados de un servicio personalizado que transforme su experiencia culinaria.</p>
+      </div>
+      
+      <div class="mv-card">
+        <h3><i class="lucide lucide-eye"></i> 
+            <span style="font-size: 1.5rem; margin-right: 0.5rem;">👁️</span>
+            visión 
+        </h3>
+        <p>Ser reconocidos como la empresa líder en distribución de utensilios de cocina de alta gama en República Dominicana, siendo sinónimo de calidad, innovación y servicio excepcional en el mercado local.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="about-section">
+    <h2 class="section-title">Nuestra Filosofía</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Cocinar es un arte, nosotros proveemos los pinceles</h3>
+        <p>Creemos que cada comida preparada con amor y herramientas adecuadas se convierte en una experiencia memorable. Nuestra filosofía se basa en tres pilares fundamentales:</p>
+        <p><strong>Calidad sin compromisos:</strong> Cada producto Royal Prestige que distribuimos cumple con los más altos estándares de fabricación y materiales premium.</p>
+        <p><strong>Innovación constante:</strong> Mantenemos nuestro catálogo actualizado con las últimas tendencias y tecnologías en utensilios de cocina.</p>
+        <p><strong>Relaciones duraderas:</strong> Más que vender productos, construimos relaciones a largo plazo con nuestros clientes, ofreciendo soporte continuo y asesoría especializada.</p>
+      </div>
+      <div class="about-image">
+        <img src="imagenes/a7.webp" alt="Filosofía de CocinaElite" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto" class="footer">
+    <div class="footer-container">
+      <h2 class="footer-title">CosinaSana</h2>
+      
+      <div class="contact-info">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h3 class="contact-label">Dirección</h3>
+            <p class="contact-text">Av. Siempre Viva 742, Santo Domingo</p>
+          </div>
+          
+          <div class="contact-item">
+            <h3 class="contact-label">Teléfono</h3>
+            <p class="contact-text">+1 (829) 704-1626</p>
+          </div>
+          
+          <div class="contact-item">
+            <h3 class="contact-label">Email</h3>
+            <p class="contact-text">waleskaperezrivas@gmail.com</p>
+          </div>
+          
+          <div class="contact-item">
+            <h3 class="contact-label">Horario</h3>
+            <p class="contact-text">Lun-Vie: 9:00 a.m. - 9:00 p.m. <br>Sáb: 9:00 a.m. - 9:00 p.m.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> Wev.S.R.L. Todos los derechos reservados. Diseñado y desarrollado por <a href="https://derejsoft.com" target="_blank" rel="noopener">DerejSoft</a>. </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="https://wa.me/18297041626" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.434-.366-.375-.504-.382a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"/>
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current year in footer
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // Mobile menu toggle
+      const menuButton = document.getElementById('menuButton');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      const menuIcon = document.getElementById('menuIcon');
+      
+      menuButton.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('show');
+        menuIcon.style.transform = dropdownMenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)';
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+          dropdownMenu.classList.remove('show');
+          menuIcon.style.transform = 'rotate(0)';
+        }
+      });
+
+      // Show WhatsApp button on mobile
+      function checkIsMobile() {
+        const whatsappFloat = document.getElementById('whatsappFloat');
+        if (window.innerWidth <= 768) {
+          whatsappFloat.style.display = 'block';
+        } else {
+          whatsappFloat.style.display = 'none';
+        }
+      }
+
+      window.addEventListener('resize', checkIsMobile);
+      checkIsMobile();
+    });
+  </script>
+</body>
+</html>
